@@ -159,7 +159,7 @@ class QueueSongViewHolder private constructor(private val binding: ItemEditableS
         listener.bind(song, this, body, binding.songDragHandle)
         binding.songAlbumCover.bind(song)
         binding.songName.text = song.name.resolve(binding.context)
-        binding.songInfo.text = song.artists.resolveNames(binding.context)
+        binding.songInfo.text = song.album.name.resolve(binding.context)
         // Not swiping this ViewHolder if it's being re-bound, ensure that the background is
         // not visible. See QueueDragCallback for why this is done.
         binding.background.isInvisible = true

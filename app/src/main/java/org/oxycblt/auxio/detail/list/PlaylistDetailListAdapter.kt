@@ -259,7 +259,7 @@ private constructor(private val binding: ItemEditableSongBinding) :
         listener.bind(this, binding.songDragHandle)
         binding.songAlbumCover.bind(song)
         binding.songName.text = song.name.resolve(binding.context)
-        binding.songInfo.text = song.artists.resolveNames(binding.context)
+        binding.songInfo.text = song.album.name.resolve(binding.context)
         // Not swiping this ViewHolder if it's being re-bound, ensure that the background is
         // not visible. See MaterialDragCallback for why this is done.
         binding.background.isInvisible = true

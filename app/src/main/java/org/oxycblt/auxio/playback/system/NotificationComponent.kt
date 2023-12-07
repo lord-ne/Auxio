@@ -76,7 +76,7 @@ class NotificationComponent(private val context: Context, sessionToken: MediaSes
         logD("Updating shown metadata")
         setLargeIcon(metadata.getBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART))
         setContentTitle(metadata.getString(MediaMetadataCompat.METADATA_KEY_TITLE))
-        setContentText(metadata.getText(MediaMetadataCompat.METADATA_KEY_ARTIST))
+        setContentText(metadata.getText(MediaMetadataCompat.METADATA_KEY_ALBUM))
         setSubText(metadata.getText(MediaMetadataCompat.METADATA_KEY_DISPLAY_DESCRIPTION))
     }
 

@@ -296,10 +296,11 @@ constructor(
         // several times.
         val title = song.name.resolve(context)
         val artist = song.artists.resolveNames(context)
+        val album = song.album.name.resolve(context)
         val builder =
             MediaMetadataCompat.Builder()
                 .putText(MediaMetadataCompat.METADATA_KEY_TITLE, title)
-                .putText(MediaMetadataCompat.METADATA_KEY_ALBUM, song.album.name.resolve(context))
+                .putText(MediaMetadataCompat.METADATA_KEY_ALBUM, album)
                 // Note: We would leave the artist field null if it didn't exist and let downstream
                 // consumers handle it, but that would break the notification display.
                 .putText(MediaMetadataCompat.METADATA_KEY_ARTIST, artist)
@@ -311,7 +312,7 @@ constructor(
                 .putText(MediaMetadataCompat.METADATA_KEY_WRITER, artist)
                 .putText(MediaMetadataCompat.METADATA_KEY_GENRE, song.genres.resolveNames(context))
                 .putText(MediaMetadataCompat.METADATA_KEY_DISPLAY_TITLE, title)
-                .putText(MediaMetadataCompat.METADATA_KEY_DISPLAY_SUBTITLE, artist)
+                .putText(MediaMetadataCompat.METADATA_KEY_DISPLAY_SUBTITLE, album)
                 .putText(
                     MediaMetadataCompat.METADATA_KEY_DISPLAY_DESCRIPTION,
                     parent?.run { name.resolve(context) }
@@ -363,7 +364,7 @@ constructor(
                         // as it's used to request a song to be played from the queue.
                         .setMediaId(song.uid.toString())
                         .setTitle(song.name.resolve(context))
-                        .setSubtitle(song.artists.resolveNames(context))
+                        .setSubtitle(song.album.name.resolve(context))
                         // Since we usually have to load many songs into the queue, use the
                         // MediaStore URI instead of loading a bitmap.
                         .setIconUri(song.album.coverUri.mediaStore)
