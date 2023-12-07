@@ -104,7 +104,7 @@ class PlaybackBarFragment : ViewBindingFragment<FragmentPlaybackBarBinding>() {
         val binding = requireBinding()
         binding.playbackCover.bind(song)
         binding.playbackSong.text = song.name.resolve(context)
-        binding.playbackInfo.text = song.artists.resolveNames(context)
+        binding.playbackInfo.text = song.album.name.resolve(context)
         binding.playbackProgressBar.max = song.durationMs.msToDs().toInt()
     }
 
