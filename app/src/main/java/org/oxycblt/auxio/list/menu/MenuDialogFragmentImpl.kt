@@ -64,7 +64,7 @@ class SongMenuDialogFragment : MenuDialogFragment<Menu.ForSong>() {
         binding.menuCover.bind(menu.song)
         binding.menuType.text = getString(R.string.lbl_song)
         binding.menuName.text = menu.song.name.resolve(context)
-        binding.menuInfo.text = menu.song.artists.resolveNames(context)
+        binding.menuInfo.text = menu.song.album.name.resolve(context)
     }
 
     override fun onClick(item: MenuItem, menu: Menu.ForSong) {
